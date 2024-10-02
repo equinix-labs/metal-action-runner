@@ -27,7 +27,6 @@ This Experimental GitHub Action sets up an Equinix Metal server that can be used
 | `repository_level`     | Set to true to enable repository level registration token      | No       | false        |
 | `custom_script`        | Custom user script to run (as root) before starting the runner | No       | ""           |
 
-
 ## Usage
 
 ```yaml
