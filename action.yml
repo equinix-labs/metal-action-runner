@@ -95,14 +95,17 @@ runs:
             --labels ${{ steps.get-registration.outputs.runner_scope }} --ephemeral
 
           # Running custom script if provided
-          if [[ -n "${{ inputs.custom_script }}" ]]; then
-            CUSTOM_SCRIPT=$(mktemp $HOME/custom_script.XXXXXX.sh)
-            cat > $CUSTOM_SCRIPT <<'CUSTOM_SCRIPT_EOF'
-            ${{ inputs.custom_script }}
-            CUSTOM_SCRIPT_EOF
-            chmod 0700 $CUSTOM_SCRIPT
-            echo "Running custom user script"
-            $CUSTOM_SCRIPT
+          CUSTOM_SCRIPT=$(mktemp $HOME/custom_script.XXXXXX.sh)
+          cat > $CUSTOM_SCRIPT <<'CUSTOM_SCRIPT_EOF'
+          ${{ inputs.custom_script }}
+          CUSTOM_SCRIPT_EOF
+
+          if [[ -s $CUSTOM_SCRIPT ]]; then
+              chmod 0700 $CUSTOM_SCRIPT
+              echo "Running custom user script"
+              $CUSTOM_SCRIPT
+          else
+              rm $CUSTOM_SCRIPT
           fi
 
           # Install and start the runner service
