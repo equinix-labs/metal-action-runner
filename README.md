@@ -15,15 +15,18 @@ This Experimental GitHub Action sets up an Equinix Metal server that can be used
 
 ## Inputs
 
-| Name                   | Description                             | Required | Default |
-| ---------------------- | --------------------------------------- | -------- | ------- |
-| `github_token`         | GitHub token with repository scope      | Yes      | -       |
-| `metal_auth_token`     | API Key for Equinix Metal               | Yes      | -       |
-| `metal_project_id`     | Project ID for Equinix Metal            | Yes      | -       |
-| `metro`                | Metro for Equinix Metal                 | Yes      | -       |
-| `plan`                 | Plan for Equinix Metal                  | Yes      | -       |
-| `os`                   | OS for Equinix Metal                    | Yes      | -       |
-| `provisioning_timeout` | How long to wait for provisioning (min) | No       | 30      |
+| Name                   | Description                                                    | Required | Default      |
+| ---------------------- | -------------------------------------------------------------- | -------- | ------------ |
+| `github_token`         | GitHub token with repository scope                             | Yes      | -            |
+| `metal_auth_token`     | API Key for Equinix Metal                                      | Yes      | -            |
+| `metal_project_id`     | Project ID for Equinix Metal                                   | Yes      | -            |
+| `metro`                | Metro for Equinix Metal                                        | Yes      | -            |
+| `plan`                 | Plan for Equinix Metal                                         | Yes      | -            |
+| `os`                   | OS for Equinix Metal                                           | No       | ubuntu_22_04 |
+| `provisioning_timeout` | How long to wait for provisioning (min)                        | No       | 30           |
+| `repository_level`     | Set to true to enable repository level registration token      | No       | false        |
+| `custom_script`        | Custom user script to run (as root) before starting the runner | No       | ""           |
+
 
 ## Usage
 
